@@ -1,0 +1,2 @@
+# GuessTheColors
+For ÓBudai Egyetem
