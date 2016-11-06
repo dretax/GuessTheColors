@@ -1,0 +1,5 @@
+c:\users\dretax\documents\visual studio 2015\Projects\GuessTheColors_AS4DCD\GuessTheColors_AS4DCD\bin\Debug\GuessTheColors_AS4DCD_DreTaX.exe
+c:\users\dretax\documents\visual studio 2015\Projects\GuessTheColors_AS4DCD\GuessTheColors_AS4DCD\bin\Debug\GuessTheColors_AS4DCD_DreTaX.pdb
+c:\users\dretax\documents\visual studio 2015\Projects\GuessTheColors_AS4DCD\GuessTheColors_AS4DCD\obj\Debug\GuessTheColors_AS4DCD_DreTaX.exe
+c:\users\dretax\documents\visual studio 2015\Projects\GuessTheColors_AS4DCD\GuessTheColors_AS4DCD\obj\Debug\GuessTheColors_AS4DCD_DreTaX.pdb
+C:\Users\DreTaX\Documents\Visual Studio 2015\Projects\GuessTheColors_AS4DCD\GuessTheColors_AS4DCD\bin\Debug\GuessTheColors_AS4DCD_DreTaX.exe.config
