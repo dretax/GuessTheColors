@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,23 +1,30 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Threading;
 
 namespace GuessTheColors_AS4DCD_DreTaX
 {
+    /// <summary>
+    /// A Program osztály maga
+    /// </summary>
     internal class Program
     {
-        private static bool Run = true;
-        private const string AdmPW = "123";
-        private static Game _game;
+        /// <summary>
+        /// TopLista elérési útvonalát tároló változó
+        /// </summary>
         private static string TopListPath;
+        /// <summary>
+        /// TopLista file-t feldolgozó osztály, és annak változója
+        /// </summary>
         private static Database TopListIni;
-        internal static bool Debug = false;
+        /// <summary>
+        /// A menü osztálya, és annak változója
+        /// </summary>
+        private static Menu MHandler;
 
-        /*
-         *  Internal Voids
-         */
-
+        /// <summary>
+        /// A Main függvény, alap beállítások, deklarálások, menü elindítása
+        /// </summary>
+        /// <param name="args">Console Argumentumjai, amelyek jelen esetben nincsenek/nem szükségesek</param>
         internal static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -30,106 +37,32 @@ namespace GuessTheColors_AS4DCD_DreTaX
             }
             TopListIni = new Database(TopListPath);
             TopListIni.ReadFile();
-            Watcher();
+            MHandler = new Menu();
+            MHandler.Watcher();
         }
 
-        internal static void Watcher()
-        {
-            while (Run)
-            {
-                Help();
-                string s = Console.ReadLine();
-                int i;
-                bool b = int.TryParse(s, out i);
-                while (!b)
-                {
-                    Console.WriteLine("Hibás Opció! Listázom a lehetőségeket.");
-                    Help();
-                    s = Console.ReadLine();
-                    b = int.TryParse(s, out i);
-                }
-                switch (i)
-                {
-                    case 1:
-                    {
-                        _game = new Game();
-                        break;
-                    }
-                    case 2:
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("===TopLista===");
-                        if (TopListIni.AllSavedPlayers.Count == 0)
-                        {
-                            Console.WriteLine("Még nincs beállítva új rekord!");
-                        }
-                        else
-                        {
-                            int ii = 1;
-                            foreach (var x in TopListIni.AllSavedPlayers)
-                            {
-                                Console.WriteLine(ii + ". " + x.Name + " Pontok: " + x.Score);
-                                ii++;
-                            }
-                        }
-                        Console.WriteLine("======");
-                        Console.WriteLine();
-                        break;
-                    }
-                    case 3:
-                    {
-                        Console.WriteLine("Kilépés megkezdése 5 másodpercen belül....");
-                        if (_game != null)
-                        {
-                            TopListIni.SaveScores();
-                        }
-                        Thread.Sleep(5000);
-                        Process.GetCurrentProcess().Kill();
-                        break;
-                    }
-                    case 4:
-                    {
-                        Console.WriteLine("Kérem a jelszót! Ha nem tudod írd be: 'exit'");
-                        string code = Console.ReadLine();
-                        bool Fail = false;
-                        while (code != AdmPW)
-                        {
-                            if (code == "exit")
-                            {
-                                Fail = true;
-                                break;
-                            }
-                            Console.WriteLine("Kérem a jelszót! (Az előző hibás volt!)");
-                            code = Console.ReadLine();
-                        }
-                        if (Fail) { break;}
-                        Debug = !Debug;
-                        if (Debug) Console.WriteLine("Debug bekapcsolva!");
-                        else Console.WriteLine("Debug kikapcsolva!");
-                        break;
-                    }
-                    default:
-                    {
-                        Console.WriteLine("Hibás Opció! Listázom a lehetőségeket.");
-                        break;
-                    }
-                }
-            }
-        }
-
-        internal static void Help()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Válassz egy opciót (Üss be egy számot)");
-            Console.WriteLine("1. Játék");
-            Console.WriteLine("2. Toplista");
-            Console.WriteLine("3. Kilépés");
-            Console.WriteLine("4. Debug Be/Ki (Jelszó Szükséges)");
-        }
-
+        /// <summary>
+        /// Visszadobja az Adatbázis Osztályát
+        /// </summary>
         internal static Database GetDatabase
         {
             get { return TopListIni;}
+        }
+
+        /// <summary>
+        /// A TopLista file elérési útvonalát dobja vissza
+        /// </summary>
+        internal static string GetTopPath
+        {
+            get { return TopListPath; }
+        }
+
+        /// <summary>
+        /// A Menü osztályt dobja vissza
+        /// </summary>
+        internal static Menu Menu
+        {
+            get { return MHandler; }
         }
     }
 }

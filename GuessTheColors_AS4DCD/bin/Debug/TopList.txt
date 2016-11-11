@@ -1,5 +1,5 @@
-cantoverpowerme=2
-feka121212=4
-gartand=7
-fekameka=10
-prooo=20
+cantoverpowerme=1
+sozm8=10
+hellothere=20
+Ordó N=30
+idontknow=40
