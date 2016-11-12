@@ -60,6 +60,11 @@ namespace GuessTheColors_AS4DCD_DreTaX
                 Console.WriteLine();
                 Console.WriteLine("Új rekord! Üss be egy felhasználónevet!");
                 string nname = Console.ReadLine();
+                while (string.IsNullOrEmpty(nname) || nname.Length < 3)
+                {
+                    Console.WriteLine("Minimum 3 karaktert írj be!");
+                    nname = Console.ReadLine();
+                }
                 Program.GetDatabase.AddNewTop(nname, Trials);
             }
         }
